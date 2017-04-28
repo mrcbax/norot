@@ -1,33 +1,26 @@
-use std::fs;
-use std::fs::{File, OpenOptions};
+use std::fs::File;
 use std::io;
 use std::io::BufReader;
 use std::io::prelude::*;
-use std::os::unix;
 use std::path::Path;
 
-struct Data {
-    contents: Vec<u8>,
-    result: Some(io::Result)
+pub fn copy_file(src: &Path, dest: &Path) -> io::Result<()> {
+    write(read(src), dest)
+}
+pub fn overwrite_file(src: &Path) -> io::Result<()> {
+    write(read(src),src)
 }
 
-fn copy_file(src: &Path, dest: &Path) -> io::Result<()> {
-    let to_write: Vec<u8> = match
-    writer(reader(src), dest)
-}
-fn overwrite_file(src: &Path) -> io::Result<()> {
-    writer(reader(src),src)
-}
-
-fn writer(bytes: Vec<u8>, path: &Path) -> io::Result<()> {
-    let mut file = try!(File::create(path));
-    file.write_all(bytes.as_slice());
+pub fn write(bytes: Vec<u8>, path: &Path) -> io::Result<()> {
+    let mut file = File::create(path).expect("Failed to write lock on file.");
+    file.write_all(bytes.as_slice()).expect("Failed to write to file.");
     file.sync_all()
 }
-fn reader(path: &Path) -> Data {
-    let file = try!(File::open(path));
-    let mut buf_reader = BufReader::new(file);
-    let mut contents: Vec<u8>;
-    let result = buf_reader.read_to_end(& mut contents);
-    Data{contents: contents, result: result}
+pub fn read(path: &Path) -> Vec<u8> {
+    let file = File::open(path).expect("Failed to read lock on file.");
+    let mut buf_reader = BufReader::new(&file);
+    let mut contents: Vec<u8> = vec!();
+    let result = buf_reader.read_to_end(& mut contents).expect("Failed to read from file.");
+    file.sync_all();
+    contents
 }

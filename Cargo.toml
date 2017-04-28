@@ -5,5 +5,5 @@ authors = ["Chad Baxter <cbaxter@mail.umw.edu>"]
 
 [dependencies]
 clap = "2.23.3"
-snap = "0.2.1"
+lz4-compress = "0.1.0"
 serde = "1.0.2"
