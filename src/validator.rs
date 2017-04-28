@@ -1,0 +1,2 @@
+fn check() {}
+fn store() {}
