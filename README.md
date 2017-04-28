@@ -23,4 +23,4 @@ Crates:
 
 - [clap ![clap crates.io](https://img.shields.io/crates/v/clap.svg)](https://crates.io/crates/clap)
 - [snap ![snap crates.io](https://img.shields.io/crates/v/snap.svg)](https://crates.io/crates/snap)
-- [serde ![serde crates.io](https://img.sheilds.io/crates/v/snap.svg)](https://crates.io/crates/serde)
+- [serde ![serde crates.io](https://img.shields.io/crates/v/serde.svg)](https://crates.io/crates/serde)
