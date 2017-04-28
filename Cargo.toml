@@ -4,3 +4,6 @@ version = "0.1.0"
 authors = ["Chad Baxter <cbaxter@mail.umw.edu>"]
 
 [dependencies]
+clap = "2.23.3"
+snap = "0.2.1"
+serde = "1.0.2"
