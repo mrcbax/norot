@@ -1,4 +1,4 @@
-# NoRot
+# NoRot [![License: LGPL v3.0](https://img.shields.io/badge/license-LGPL%20v3.0-blue.svg)](https://github.com/LogoiLab/norot/LICENSE)
 A command line tool to prevent bit-rot of specific files.
 
 Bit-rot is a problem for any storage device. Unfortunately there are no easy ways to prevent it for crucial data.
